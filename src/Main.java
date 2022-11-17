@@ -165,6 +165,7 @@ public class Main {
         bmw.checkRegNumber();
         System.out.println(hyundai.getRegNumber());
         hyundai.reFill();
+        System.out.println(hyundai.equals(bmw));
 
 
     }
