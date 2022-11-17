@@ -67,11 +67,19 @@ public abstract class Transport {
     }
 
     public void setColor(String color) {
-        this.color = color;
+        if (color != null && !color.isBlank() && !color.isEmpty()) {
+            this.color = color;
+        } else {
+            this.color = "default color";
+        }
     }
 
     public void setMaxSpeed(int maxSpeed) {
-        this.maxSpeed = maxSpeed;
+        if (maxSpeed <= 0) {
+            this.maxSpeed = 60;
+        } else {
+            this.maxSpeed = maxSpeed;
+        }
     }
 
     public String getFuelType() {

@@ -61,10 +61,11 @@ public class Main {
                 "Южная Корея",
                 "автомат",
                 "седан",
-                "х000хх000",
+                "х00хх000",
                 true,
                 huyndaiKey,
                 "дизель");
+
 
 
         Train martin = new Train(
@@ -110,6 +111,8 @@ public class Main {
         audi.reFill();
         System.out.println(audi.toString());
         bmw.reFill();
+        System.out.println(bmw.tires);
+        System.out.println(bmw.changeTires());
 
         //травоядные
 
@@ -153,6 +156,15 @@ public class Main {
 
 
 
+        System.out.println(hyundai.toString());
+        System.out.println(audi.toString());
+        System.out.println(bmw.toString());
+        System.out.println(kia.toString());
+        System.out.println();
+        hyundai.checkRegNumber();
+        bmw.checkRegNumber();
+        System.out.println(hyundai.getRegNumber());
+        hyundai.reFill();
 
 
     }

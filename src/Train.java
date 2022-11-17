@@ -42,15 +42,23 @@ public class Train extends Transport {
     }
 
     public void setTripPrice(int tripPrice) {
-        this.tripPrice = tripPrice;
+        if (tripPrice <= 0) {
+            this.tripPrice = 5000;
+        } else {
+            this.tripPrice = tripPrice;
+        }
     }
 
     public Integer getTimeOfTrip() {
         return timeOfTrip;
     }
 
-    public void setTimeOfTrip(int timeOfTrip) {
-        this.timeOfTrip = timeOfTrip;
+    public void setTimeOfTrip(Integer timeOfTrip) {
+        if (timeOfTrip == null) {
+            this.timeOfTrip = 24;
+        } else {
+            this.timeOfTrip = timeOfTrip;
+        }
     }
 
     public String getArrivalStationName() {
@@ -58,7 +66,11 @@ public class Train extends Transport {
     }
 
     public void setArrivalStationName(String arrivalStationName) {
-        this.arrivalStationName = arrivalStationName;
+        if (arrivalStationName != null && !arrivalStationName.isEmpty() && !arrivalStationName.isBlank()) {
+            this.arrivalStationName = arrivalStationName;
+        } else {
+            this.arrivalStationName = "default arrivalStationName";
+        }
     }
 
     public String getEndStation() {
@@ -66,15 +78,23 @@ public class Train extends Transport {
     }
 
     public void setEndStation(String endStation) {
-        this.endStation = endStation;
+        if (endStation != null && !endStation.isBlank() && !endStation.isEmpty()) {
+            this.endStation = endStation;
+        } else {
+            this.endStation = "default";
+        }
     }
 
     public Integer getWagonsNum() {
         return wagonsNum;
     }
 
-    public void setWagonsNum(int wagonsNum) {
-        this.wagonsNum = wagonsNum;
+    public void setWagonsNum(Integer wagonsNum) {
+        if (wagonsNum == null) {
+            this.wagonsNum = 10;
+        } else {
+            this.wagonsNum = wagonsNum;
+        }
     }
 
 

@@ -10,6 +10,8 @@ public class Car extends Transport {
 
     boolean tires;
     private String fuelType;
+    public Key key;
+
 
     public static class Key {
         private final boolean remoteEngineSet;
@@ -26,9 +28,8 @@ public class Car extends Transport {
                     " Удаленный запуск двигателя=" + remoteEngineSet +
                             ", Безключевой доступ=" + keylessAccess;
         }
-    }
 
-    public Car.Key key;
+    }
 
 
     public Car(String brand, String model, Double engineVolume, String color, Integer year, Integer maxSpeed, String country, String transmission,
@@ -54,8 +55,11 @@ public class Car extends Transport {
         } else {
             this.bodyType = bodyType;
         }
-
-        this.regNumber = regNumber;
+        if (regNumber == null || regNumber.length() != 9 || regNumber.isBlank()) {
+            this.regNumber = ("Регистрационный номер введен неверно");
+        } else {
+            this.regNumber = regNumber;
+        }
         this.key = key;
 
         if (fuelType != null && !fuelType.isEmpty() && !fuelType.isBlank()) {
@@ -90,16 +94,28 @@ public class Car extends Transport {
 
 
     public void setEngineVolume(Double engineVolume) {
-        this.engineVolume = engineVolume;
+        if (engineVolume <= 0) {
+            this.engineVolume = 1.5;
+        } else {
+            this.engineVolume = engineVolume;
+        }
     }
 
 
     public void setTransmission(String transmission) {
-        this.transmission = transmission;
+        if (transmission == "" || transmission == null) {
+            this.transmission = "Автомат";
+        } else {
+            this.transmission = transmission;
+        }
     }
 
     public void setRegNumber(String regNumber) {
-        this.regNumber = regNumber;
+        if (regNumber == null || regNumber.length() != 9 || regNumber.isBlank()) {
+            this.regNumber = ("Регистрационный номер введен неверно");
+        } else {
+            this.regNumber = regNumber;
+        }
     }
 
     public void setTires(boolean tires) {
@@ -131,6 +147,26 @@ public class Car extends Transport {
             System.out.println("Номер задан неверно");
         } else {
             System.out.println(("Номер верный"));
+        }
+    }
+    public void checkRegNumber() {
+        char[] chars =  this.regNumber.toCharArray();
+        if (regNumber.length() != 9) {
+            System.out.println("Номер введен не верно!!!!!");
+        }
+        else if (    !Character.isAlphabetic(chars[0])
+                && !Character.isDigit(chars[1])
+                && !Character.isDigit(chars[2])
+                && !Character.isDigit(chars[3])
+                && !Character.isAlphabetic(chars[4])
+                && !Character.isAlphabetic(chars[5])
+                && !Character.isDigit(chars[6])
+                && !Character.isDigit(chars[7])
+                && !Character.isDigit(chars[8])
+        ) {
+            System.out.println("Номер введен не верно!!!!!");
+        } else {
+            System.out.println("номер верный");
         }
     }
 
